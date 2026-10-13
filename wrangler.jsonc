@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers 정적 사이트 설정: public 폴더의 파일을 그대로 올린다
+  "name": "dressroom-planner",
+  "compatibility_date": "2026-10-13",
+  "assets": {
+    "directory": "./public"
+  }
+}

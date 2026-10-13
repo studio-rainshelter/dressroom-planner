@@ -1,0 +1,18 @@
+{
+  "name": "dressroom-planner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "방 크기를 넣고 행거·서랍·선반을 mm 단위로 배치해 보는 드레스룸 3D 플래너",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --test test/core.test.js",
+    "test:browser": "node build.js && node test/browser1.js && node test/browser2.js && node test/browser3.js && node test/browser4.js && node test/browser5.js && node test/browser6.js && node test/browser7.js && node test/browser8.js && node test/site.js",
+    "deploy": "node build.js && npx wrangler deploy"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans-kr": "^5.3.0",
+    "@fontsource/orbit": "^5.3.0",
+    "three": "0.128.0"
+  }
+}
