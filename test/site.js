@@ -8,7 +8,24 @@ const check = (name, ok, info) => { results.push({ name, ok: !!ok, info }); cons
   const page = t.page;
   check('페이지가 뜬다', await page.evaluate(() => !!window.__planner && !window.claude));
   check('문서 언어가 한국어', await page.evaluate(() => document.documentElement.lang === 'ko'));
-  check('제목', (await page.title()) === '드레스룸 3D 플래너');
+  check('제목', (await page.title()).startsWith('드레스룸 3D 플래너'), await page.title());
+  const seo = await page.evaluate(() => {
+    const m = (sel) => { const e = document.querySelector(sel); return e ? e.getAttribute('content') || e.getAttribute('href') : null; };
+    let ld = null;
+    try { ld = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent); } catch (e) { ld = null; }
+    return { titles: document.querySelectorAll('title').length, desc: m('meta[name="description"]'), canon: m('link[rel="canonical"]'), ogImage: m('meta[property="og:image"]'), ogTitle: m('meta[property="og:title"]'), ld };
+  });
+  const cfg = require('../site.config.json');
+  check('제목 태그는 하나', seo.titles === 1, seo.titles);
+  check('검색 설명', seo.desc === cfg.description, seo.desc);
+  check('대표 주소', seo.canon === cfg.url, seo.canon);
+  check('공유 이미지 주소', seo.ogImage === cfg.url + 'og-image.jpg' && !!seo.ogTitle, seo.ogImage);
+  check('구조화 데이터', seo.ld && seo.ld['@type'] === 'WebApplication' && seo.ld.url === cfg.url, seo.ld);
+  const fsx = require('fs');
+  const pub = require('path').join(__dirname, '..', 'public');
+  check('robots.txt에 사이트맵 주소', fsx.readFileSync(pub + '/robots.txt', 'utf8').includes('Sitemap: ' + cfg.url + 'sitemap.xml'));
+  check('sitemap.xml에 사이트 주소', fsx.readFileSync(pub + '/sitemap.xml', 'utf8').includes('<loc>' + cfg.url + '</loc>'));
+  check('공유 이미지 파일', fsx.statSync(pub + '/og-image.jpg').size > 10000);
 
   // 방 크기를 바꾸면 이 기기에 저장된다
   await page.click('#tab-room');

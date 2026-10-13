@@ -11,6 +11,7 @@
 | `public/` | 웹사이트로 올리는 파일 (`index.html`은 빌드 결과물) |
 | `test/` | 점검 스크립트 |
 | `wrangler.jsonc` | Cloudflare 배포 설정 |
+| `site.config.json` | 사이트 주소, 검색 결과 제목·설명, 검색 서비스 소유 확인 값 |
 
 ## 수정 후 반영하기
 
@@ -39,6 +40,16 @@ node test/monkey.js 7 70 wild              # 무작위 조작 점검 (시드, �
    - Deploy command: `npx wrangler deploy`
    - (선택) Advanced settings의 변수 `SKIP_DEPENDENCY_INSTALL` = `true`: 배포에 필요 없는 점검용 패키지 설치를 건너뜁니다
 4. 배포가 끝나면 `https://dressroom-planner.<계정 하위 도메인>.workers.dev` 주소로 열립니다. 개인 도메인은 해당 Worker의 설정에서 연결할 수 있습니다.
+
+## 검색 노출
+
+`npm run build`가 `site.config.json`을 읽어 검색 결과 제목·설명, 공유 미리보기(`og-image.jpg`), `robots.txt`, `sitemap.xml`을 만듭니다.
+
+1. **Google Search Console**(search.google.com/search-console)에 URL 접두어 `https://dressroom-planner.rainshelter.net/`로 사이트를 추가합니다.
+2. **네이버 서치어드바이저**(searchadvisor.naver.com)의 웹마스터 도구에 같은 주소를 추가합니다.
+3. 소유 확인 방법으로 HTML 태그를 고르고, 태그의 `content` 값만 `site.config.json`의 `googleVerification`, `naverVerification`에 넣습니다.
+4. `npm run build` 후 커밋·푸시하고, 배포가 끝나면 각 사이트에서 소유 확인을 누릅니다.
+5. 두 곳 모두 사이트맵 메뉴에 `sitemap.xml`을 제출합니다.
 
 ## 저장 방식
 

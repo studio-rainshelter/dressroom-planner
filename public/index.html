@@ -3,11 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="방 크기를 넣고 행거·서랍·선반을 mm 단위로 배치해 보는 드레스룸 3D 플래너">
+<title>드레스룸 3D 플래너 - 방 크기만 넣고 드레스룸 배치해 보기</title>
+<meta name="description" content="방 크기를 mm 단위로 넣고 행거·서랍·선반·스피드랙·코너장을 끌어다 놓아 드레스룸 전체 구성을 3D로 미리 보는 무료 웹 플래너입니다. 부품 목록까지 함께 정리됩니다.">
+<link rel="canonical" href="https://dressroom-planner.rainshelter.net/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="드레스룸 3D 플래너">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://dressroom-planner.rainshelter.net/">
+<meta property="og:title" content="드레스룸 3D 플래너 - 방 크기만 넣고 드레스룸 배치해 보기">
+<meta property="og:description" content="방 크기를 mm 단위로 넣고 행거·서랍·선반·스피드랙·코너장을 끌어다 놓아 드레스룸 전체 구성을 3D로 미리 보는 무료 웹 플래너입니다. 부품 목록까지 함께 정리됩니다.">
+<meta property="og:image" content="https://dressroom-planner.rainshelter.net/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="드레스룸 3D 플래너로 배치한 드레스룸 3D 화면">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="드레스룸 3D 플래너 - 방 크기만 넣고 드레스룸 배치해 보기">
+<meta name="twitter:description" content="방 크기를 mm 단위로 넣고 행거·서랍·선반·스피드랙·코너장을 끌어다 놓아 드레스룸 전체 구성을 3D로 미리 보는 무료 웹 플래너입니다. 부품 목록까지 함께 정리됩니다.">
+<meta name="twitter:image" content="https://dressroom-planner.rainshelter.net/og-image.jpg">
 <meta name="theme-color" content="#2b6a5c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"드레스룸 3D 플래너","url":"https://dressroom-planner.rainshelter.net/","description":"방 크기를 mm 단위로 넣고 행거·서랍·선반·스피드랙·코너장을 끌어다 놓아 드레스룸 전체 구성을 3D로 미리 보는 무료 웹 플래너입니다. 부품 목록까지 함께 정리됩니다.","applicationCategory":"DesignApplication","operatingSystem":"Web","inLanguage":"ko","image":"https://dressroom-planner.rainshelter.net/og-image.jpg","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}</script>
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<title>드레스룸 3D 플래너</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Orbit&display=swap">
 <style>
 :root {
@@ -475,6 +492,7 @@ td.spec-cell { font-family: var(--font-data); font-variant-numeric: tabular-nums
 </style>
 </head>
 <body>
+<noscript><main style="max-width:640px;margin:40px auto;padding:0 20px;font:16px/1.7 sans-serif"><h1>드레스룸 3D 플래너</h1><p>방 크기를 mm 단위로 넣고 행거·서랍·선반·스피드랙·코너장을 끌어다 놓아 드레스룸 전체 구성을 3D로 미리 보는 무료 웹 플래너입니다. 부품 목록까지 함께 정리됩니다.</p><ol><li>방: 가로·세로·천장 높이를 mm 단위로 넣고 문·창문·기둥을 놓습니다.</li><li>배치: 행거 유닛·코너장·거울장을 끌어다 놓으면 자석 앵커가 벽과 옆 유닛에 붙여 줍니다. 판넬형·기둥형·스피드랙 형태와 여닫이문·미닫이문을 고를 수 있습니다.</li><li>내부: 행거봉·선반·서랍을 넣고 높이를 맞춥니다.</li><li>목록: 확인할 점과 부품 목록을 봅니다.</li></ol><p>이 플래너는 자바스크립트와 WebGL이 켜진 브라우저에서 동작합니다.</p></main></noscript>
 <div class="app" id="app">
   <header class="top">
     <div class="brand">
